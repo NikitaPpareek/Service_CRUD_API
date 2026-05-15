@@ -7,22 +7,17 @@ const serviceSchema = new mongoose.Schema({
         required: true
     },
 
-    description: {
-        type: String
-    },
+    description: String,
 
-    status: {
-        type: String,
-        enum: ['active', 'inactive'],
-        default: 'active'
-    },
+    status: String,
 
-    type: {
-        type: String,
-        enum: ['digital', 'physical'],
-        required: true
-    }
+    type: String,
 
-}, { timestamps: true });
+    image: String
 
-module.exports = mongoose.model('Service', serviceSchema);
+});
+
+module.exports = mongoose.model(
+    'service',
+    serviceSchema
+);

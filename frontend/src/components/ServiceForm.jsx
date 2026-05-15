@@ -12,6 +12,9 @@ function ServiceForm({
     type,
     setType,
 
+    image,
+    setImage,
+
     addService,
     updateService,
 
@@ -112,6 +115,22 @@ function ServiceForm({
                     </option>
 
                 </select>
+
+
+
+                {/* IMAGE INPUT */}
+
+                <input
+
+                    type="file"
+
+                    onChange={(e) =>
+                        setImage(e.target.files[0])
+                    }
+
+                    className="border border-gray-300 p-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-400"
+
+                />
 
 
 

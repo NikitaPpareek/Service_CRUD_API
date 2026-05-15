@@ -14,6 +14,9 @@ function Services() {
     const [status, setStatus] = useState('');
     const [type, setType] = useState('');
 
+    // IMAGE STATE
+    const [image, setImage] = useState(null);
+
     const [keyword, setKeyword] = useState('');
 
     const [editId, setEditId] = useState(null);
@@ -51,20 +54,30 @@ function Services() {
 
 
 
+    // ADD SERVICE
     const addService = async () => {
 
         try {
+
+            const formData = new FormData();
+
+            formData.append('title', title);
+
+            formData.append('description', description);
+
+            formData.append('status', status);
+
+            formData.append('type', type);
+
+            formData.append('image', image);
+
+
 
             await axios.post(
 
                 'http://localhost:3000/services/addservice',
 
-                {
-                    title,
-                    description,
-                    status,
-                    type
-                }
+                formData
 
             );
 
@@ -139,20 +152,30 @@ function Services() {
 
 
 
+    // UPDATE SERVICE
     const updateService = async () => {
 
         try {
+
+            const formData = new FormData();
+
+            formData.append('title', title);
+
+            formData.append('description', description);
+
+            formData.append('status', status);
+
+            formData.append('type', type);
+
+            formData.append('image', image);
+
+
 
             await axios.put(
 
                 `http://localhost:3000/services/updateservice/${editId}`,
 
-                {
-                    title,
-                    description,
-                    status,
-                    type
-                }
+                formData
 
             );
 
@@ -179,6 +202,9 @@ function Services() {
         setDescription('');
         setStatus('');
         setType('');
+
+        // CLEAR IMAGE
+        setImage(null);
 
     };
 
@@ -223,6 +249,10 @@ return (
 
                 type={type}
                 setType={setType}
+
+                // IMAGE PROPS
+                image={image}
+                setImage={setImage}
 
                 addService={addService}
                 updateService={updateService}
